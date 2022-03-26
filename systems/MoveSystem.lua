@@ -6,8 +6,10 @@ local MoveSystem = Concord.system({
 
 function MoveSystem:update(dt)
   for _, e in ipairs(self.pool) do
-    e.position.x = e.position.x + e.velocity.x * dt
-    e.position.y = e.position.y + e.velocity.y * dt
+    e.position.x = e.position.x + e.velocity.x
+    e.position.y = e.position.y + e.velocity.y
+    e.velocity.x = 0
+    e.velocity.y = 0
   end
 end
 

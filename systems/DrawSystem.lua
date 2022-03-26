@@ -6,7 +6,7 @@ local DrawSystem = Concord.system({
 
 function DrawSystem:draw()
   for _, e in ipairs(self.pool) do
-    love.graphics.draw(e.image.image, e.position.x, e.position.y)
+    love.graphics.draw(e.image.spritesheet, e.image.quad, e.position.x * 16, e.position.y * 16)
   end
 end
 
