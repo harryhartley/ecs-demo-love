@@ -2,9 +2,9 @@ local push = require('lib.push')
 local Concord = require('lib.concord')
 
 local tileSize, gridWidth, gridHeight = 16, 32, 16
-local gameWidth, gameHeight = gridWidth * tileSize, gridHeight * tileSize
+local gameWidth, gameHeight = gridWidth*tileSize, gridHeight*tileSize
 local windowWidth, windowHeight = love.window.getDesktopDimensions()
-windowWidth, windowHeight = windowWidth * .7, windowHeight * .7
+windowWidth, windowHeight = windowWidth*.7, windowHeight*.7
 
 push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen = false, pixelperfect = true})
 
@@ -15,20 +15,22 @@ Concord.utils.loadNamespace('systems', Systems)
 
 local world = Concord.world()
 world:addSystems(
+  Systems.MapSystem,
   Systems.MoveSystem,
   Systems.DrawSystem,
   Systems.ControlSystem
 )
 
 local spritesheet = love.graphics.newImage('img/spritesheet.png')
-local playerQuad = love.graphics.newQuad(0 * tileSize, 0 * tileSize, tileSize, tileSize, spritesheet:getDimensions())
-local floorQuad = love.graphics.newQuad(2 * tileSize, 0 * tileSize, tileSize, tileSize, spritesheet:getDimensions())
-local wallQuad = love.graphics.newQuad(3 * tileSize, 0 * tileSize, tileSize, tileSize, spritesheet:getDimensions())
+local playerQuad = love.graphics.newQuad(0*tileSize, 0*tileSize, tileSize, tileSize, spritesheet:getDimensions())
+
+local map = Concord.entity(world)
+:give('map', gridWidth, gridHeight)
 
 local player = Concord.entity(world)
 :give('position', 0, 0)
 :give('velocity', 0, 0)
-:give('image', spritesheet, playerQuad)
+:give('image', playerQuad)
 :give('drawable')
 :give('control', 'w', 'a', 's', 'd')
 
@@ -46,6 +48,6 @@ end
 
 function love.draw()
   push:start()
-  world:emit('draw')
+  world:emit('draw', spritesheet)
   push:finish()
 end

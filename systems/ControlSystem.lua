@@ -13,10 +13,10 @@ function ControlSystem:keypressed(key)
       e.velocity.x = e.velocity.x - 1
     end
     if key == e.control.down then
-      e.velocity.y = e.velocity.y + 1
+      e.velocity.y = e.velocity.y+1
     end
     if key == e.control.right then
-      e.velocity.x = e.velocity.x + 1
+      e.velocity.x = e.velocity.x+1
     end
   end
 end

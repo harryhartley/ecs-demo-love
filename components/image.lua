@@ -1,6 +1,5 @@
 local Concord = require('lib.concord')
 
-Concord.component('image', function(c, spritesheet, quad)
-  c.spritesheet = spritesheet
+Concord.component('image', function(c, quad)
   c.quad = quad
 end)
