@@ -28,7 +28,7 @@ local map = Concord.entity(world)
 :give('map', gridWidth, gridHeight)
 
 local player = Concord.entity(world)
-:give('position', 0, 0)
+:give('position', math.floor(gridWidth/2), math.floor(gridHeight/2))
 :give('velocity', 0, 0)
 :give('image', playerQuad)
 :give('drawable')
@@ -43,7 +43,8 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
-  world:emit('update', dt)
+  world:emit('update')
+  world:emit('move', gridWidth, gridHeight)
 end
 
 function love.draw()

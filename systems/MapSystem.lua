@@ -17,7 +17,11 @@ function Map:load()
   for _, e in ipairs(self.pool) do
     for y = 0, e.map.height-1 do
       for x = 0, e.map.width-1 do
-        e.map.map[y][x] = generateRandomTile()
+        if x == 0 or x == e.map.width-1 or y == 0 or y == e.map.height-1 then
+          e.map.map[y][x] = 2
+        else
+          e.map.map[y][x] = generateRandomTile()
+        end
       end
     end
   end

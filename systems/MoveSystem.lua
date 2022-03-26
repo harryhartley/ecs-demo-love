@@ -1,15 +1,19 @@
 local Concord = require('lib.concord')
 
 local MoveSystem = Concord.system({
-  pool = {'position', 'velocity'}
+  pool = {'position', 'velocity'},
+  mapPool = {'map'}
 })
 
-function MoveSystem:update(dt)
+function MoveSystem:move(gridWidth, gridHeight)
+  -- local map = self.mapPool[1]
   for _, e in ipairs(self.pool) do
-    e.position.x = e.position.x+e.velocity.x
-    e.position.y = e.position.y+e.velocity.y
-    e.velocity.x = 0
-    e.velocity.y = 0
+    -- if map.map[e.position.x+e.velocity.x][e.position.y+e.velocity.y] == 2 then --nil reference
+    --   return
+    -- end
+    e.position.x = math.min(math.max(e.position.x+e.velocity.x, 0), gridWidth-1)
+    e.position.y = math.min(math.max(e.position.y+e.velocity.y, 0), gridHeight-1)
+    e.velocity.x, e.velocity.y = 0, 0
   end
 end
 
