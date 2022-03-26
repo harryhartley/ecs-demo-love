@@ -1,4 +1,4 @@
-local Concord = require('../lib/concord')
+local Concord = require('lib/concord')
 
 local MoveSystem = Concord.system({
   pool = {'position', 'velocity'}

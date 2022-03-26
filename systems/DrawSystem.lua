@@ -1,4 +1,4 @@
-local Concord = require('../lib/concord')
+local Concord = require('lib/concord')
 
 local DrawSystem = Concord.system({
   pool = {'position', 'image', 'drawable'}
