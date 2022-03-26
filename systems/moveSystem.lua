@@ -10,3 +10,5 @@ function MoveSystem:update(dt)
     e.position.y = e.position.y + e.velocity.y * dt
   end
 end
+
+return MoveSystem

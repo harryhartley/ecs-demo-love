@@ -1,12 +1,12 @@
 local Concord = require('lib.concord')
 
-Concord.utils.loadNamespace('components')
-
 local Systems = {}
 Concord.utils.loadNamespace('systems', Systems)
 
+Concord.utils.loadNamespace('components')
+
 local world = Concord.world()
-world:addSystems(Systems.MoveSystem, Systems.DrawSystem)
+world:addSystems(Systems.moveSystem, Systems.drawSystem)
 
 local entity_1 = Concord.entity(world)
 :give('position', 100, 100)

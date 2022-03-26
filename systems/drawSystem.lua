@@ -9,3 +9,5 @@ function DrawSystem:draw()
     love.graphics.draw(e.image.image, e.position.x, e.position.y)
   end
 end
+
+return DrawSystem
