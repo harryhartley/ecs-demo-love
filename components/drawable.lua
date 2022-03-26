@@ -1,3 +1,3 @@
-local Concord = require('lib/concord')
+local Concord = require('lib.concord')
 
 Concord.component('drawable')

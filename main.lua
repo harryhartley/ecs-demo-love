@@ -14,13 +14,15 @@ local entity_1 = Concord.entity(world)
 :give('image', 'img/idle/Warrior_Idle_1.png')
 :give('drawable')
 
+local entity_2 = Concord.entity(world)
+:give('position', 50, 50)
+:give('image', 'img/idle/Warrior_Idle_1.png')
+:give('drawable')
+
 function love.update(dt)
   world:emit('update', dt)
 end
 
 function love.draw()
   world:emit('draw')
-  for k, v in pairs(Systems) do
-    print(k, v)
-  end
 end
